@@ -1,4 +1,6 @@
-import 'package:first_flutter_project/detail.dart';
+import 'package:first_flutter_project/first_screen.dart';
+import 'package:first_flutter_project/routes/constantRoutes.dart';
+import 'package:first_flutter_project/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +13,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: MyRouter.generateRoute,
+        initialRoute: "/",
         home: Scaffold(
           backgroundColor: Colors.grey[200],
           appBar: AppBar(
@@ -209,6 +213,20 @@ class MyApp extends StatelessWidget {
                               ),
                             )
                           ],
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => const FirstScreen(),
+                              ),
+                            );
+                          },
+                          child: Text("Go to FirstScreen"),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              padding: EdgeInsets.all(20),
+                              foregroundColor: Colors.white),
                         )
                       ],
                     ),
@@ -220,7 +238,7 @@ class MyApp extends StatelessWidget {
         ));
   }
 
-  Column Card(String text,String image,BuildContext context) {
+  Column Card(String text, String image, BuildContext context) {
     return Column(
       children: [
         Container(
