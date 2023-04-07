@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -32,267 +33,286 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  String name = "Thant Zin Tun";
+  String name = "Drawer";
+
+  var isSelected = 1;
+
+  selecting(int input) {
+    setState(() {
+      isSelected = input;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      endDrawer: Drawer(
-        child: Row(children: [
-          Text(name),
-          IconButton(onPressed: (){
-              setState(() {
-                  name = "Change Thant Zin Tun to Aung Aung";
-              });
-          }, icon: const Icon(Icons.abc_sharp))
-        ]),
-      ),
-      appBar: AppBar(
-        leading: Builder(
-          builder: (context) => IconButton(
-              onPressed: () {
-                Scaffold.of(context).openEndDrawer();
-              },
-              icon: Icon(Icons.person, color: Colors.pink[200], size: 30)),
-        ),
-        toolbarHeight: 70.0,
-        elevation: 2,
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: Colors.grey[200],
-        actions: [
-          Container(
-            width: 40.0,
-            height: 40.0,
-            margin: const EdgeInsets.only(right: 10),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-            ),
-            child: CircleAvatar(
-              backgroundColor: Colors.transparent,
-              child: Icon(
-                Icons.search,
-                color: Colors.pink[200],
-                size: 30,
+        endDrawer: Drawer(
+          child: Row(children: [
+            Text(name),
+          ]),
+        ),
+        appBar: AppBar(
+          leading: Builder(
+            builder: (context) => IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openEndDrawer();
+                },
+                icon: Icon(Icons.person, color: Colors.pink[200], size: 30)),
+          ),
+          toolbarHeight: 50.0,
+          elevation: 2,
+          backgroundColor: Colors.grey[200],
+          actions: [
+            Container(
+              width: 40.0,
+              height: 40.0,
+              margin: const EdgeInsets.only(right: 10),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.white,
               ),
-            ),
-          )
-        ],
-      ),
-      bottomNavigationBar: Container(
-        height: 70,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 1,
-                blurRadius: 5,
-              )
-            ],
-            borderRadius: BorderRadius.only(topRight: Radius.circular(20))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            NavigationIcon(Icons.home, isSelected: true),
-            NavigationIcon(Icons.person),
-            NavigationIcon(Icons.message),
-            NavigationIcon(Icons.settings),
-            NavigationIcon(Icons.card_travel),
+              child: CircleAvatar(
+                backgroundColor: Colors.transparent,
+                child: IconButton(onPressed: (){
+                    print("Search Button is clicking");
+                }, icon: Icon(
+                  Icons.search,
+                  color: Colors.pink[200],
+                  size: 30,
+                ),)
+              ),
+            )
           ],
         ),
-      ),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          Row(
-            children: const [
-              SizedBox(width: 10),
-              Text("Shop", style: TextStyle(fontSize: 26)),
-              SizedBox(width: 10),
-              Text("Anthropologie",
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1)),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
+        bottomNavigationBar: Container(
+          height: 70,
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  spreadRadius: 1,
+                  blurRadius: 5,
+                )
+              ],
+              borderRadius: BorderRadius.only(topRight: Radius.circular(20))),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              customButton("Home Decor", isSelected: true),
-              const SizedBox(width: 10),
-              customButton("Bath & Body"),
-              const SizedBox(width: 10),
-              customButton("Beauty"),
+              NavigationIcon(Icons.home),
+              NavigationIcon(Icons.person),
+              NavigationIcon(Icons.message),
+              NavigationIcon(Icons.settings),
+              NavigationIcon(Icons.card_travel),
             ],
           ),
-          const SizedBox(height: 30),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(25)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 1,
-                      blurRadius: 5,
-                    )
-                  ]),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Title("Candels", isSelected: true),
-                        Title("Vases"),
-                        Title("bins"),
-                        Title("Floral"),
-                        Title("Decor"),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      child: Row(
+        ),
+        body: Column(
+          children: [
+            const SizedBox(height: 20),
+            Row(
+              children: const [
+                SizedBox(width: 10),
+                Text("Shop", style: TextStyle(fontSize: 26)),
+                SizedBox(width: 10),
+                Text("Anthropologie",
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 1)),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                customButton("Home Decoration", isSelected: true),
+                const SizedBox(width: 10),
+                customButton("Bath & Body"),
+                const SizedBox(width: 10),
+                customButton("Beauty"),
+              ],
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(25)),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 1,
+                        blurRadius: 5,
+                      )
+                    ]),
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Card("Summer", "one", context),
-                          const SizedBox(width: 15),
-                          Card("Rainy", "two", context),
-                          const SizedBox(width: 15),
-                          Card("Winter", "three", context),
-                          const SizedBox(width: 15),
-                          Card("Beautiful Night", "four", context),
+                          Title("Candels", isSelected: true),
+                          Title("Vases"),
+                          Title("bins"),
+                          Title("Floral"),
+                          Title("Decoration"),
                         ],
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                        height: 5,
-                        width: 400,
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                            color: Colors.grey[300],
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Container(
+                      const SizedBox(height: 20),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        child: Row(
+                          children: [
+                            Card("Summer", "one", context),
+                            const SizedBox(width: 15),
+                            Card("Rainy", "two", context),
+                            const SizedBox(width: 15),
+                            Card("Winter", "three", context),
+                            const SizedBox(width: 15),
+                            Card("Beautiful Night", "four", context),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
                           height: 5,
-                          width: 100,
+                          width: 400,
+                          alignment: Alignment.centerLeft,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.black,
+                              color: Colors.grey[300],
+                              borderRadius: BorderRadius.circular(10)),
+                          child: Container(
+                            height: 5,
+                            width: 100,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.black,
+                            ),
+                          )),
+                      const SizedBox(height: 25),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Holiday Special",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 20),
                           ),
-                        )),
-                    const SizedBox(height: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Holiday Special",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
-                        ),
-                        TextButton(
-                            style: TextButton.styleFrom(
-                                backgroundColor: Colors.pink[200],
-                                padding: const EdgeInsets.all(15.0)),
-                            onPressed: () {
-                              print("View all button is clicking");
-                            },
-                            child: const Text(
-                              "View All",
-                              style: TextStyle(color: Colors.white),
-                            ))
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Container(
-                          height: 200,
-                          width: 300,
-                          child: Row(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(25),
-                                  child: Image.asset("assets/images/girl.jpg")),
-                              Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("For Beautiful Girl"),
-                                    SizedBox(height: 10.0),
-                                    Text("Summer Collections",
-                                        style: TextStyle(fontSize: 10.0)),
-                                    Spacer(),
-                                    Icon(
-                                      Icons.sunny_snowing,
-                                      color: Colors.redAccent,
-                                    )
+                          TextButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Colors.pink[200],
+                                  padding: const EdgeInsets.all(15.0)),
+                              onPressed: () {
+                                showDialog(context: context, builder: (context) => AlertDialog(
+                                  title: const Text("Are you want to view?",style: TextStyle(fontSize: 18)),
+                                  content: const Text("Cotton is a good absorber of water. Since we sweat a lot in summers, cotton clothes absorb sweat from our body and exposes the sweat to the atmosphere, making its evaporation faster.",style: TextStyle(fontSize: 15)),
+                                  actions: [
+                                    TextButton(onPressed: () {
+                                        print("good button is clicking");
+                                    }, child: const Text("Yes,I like it",style: TextStyle(color: Colors.black))),
+                                    TextButton(onPressed: () {
+                                        Navigator.of(context).pop();
+                                    }, child: const Text("No",style: TextStyle(color: Colors.black))),
                                   ],
+                                ));
+                              },
+                              child: const Text(
+                                "View All",
+                                style: TextStyle(color: Colors.white),
+                              ))
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: 300,
+                            child: Row(
+                              children: [
+                                ClipRRect(
+                                    borderRadius: BorderRadius.circular(25),
+                                    child: Image.asset("assets/images/girl.jpg")),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("For Beautiful Girl"),
+                                      SizedBox(height: 10.0),
+                                      Text("Summer Collections",
+                                          style: TextStyle(fontSize: 10.0)),
+                                      Spacer(),
+                                      Icon(
+                                        Icons.sunny_snowing,
+                                        color: Colors.redAccent,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const FirstScreen(),
+                                ),
+                              );
+                            },
+                            child: Text("See Collections"),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.black,
+                                padding: const EdgeInsets.all(20),
+                                foregroundColor: Colors.white),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const FirstScreen(),
-                              ),
-                            );
-                          },
-                          child: Text("See Collections"),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.black,
-                              padding: EdgeInsets.all(20),
-                              foregroundColor: Colors.white),
-                        ),
-                        SizedBox(width: 20),
-                        OutlinedButton(
-                          onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SecondScreen(),
-                              ),
-                            );
-                          },
-                          child: Text("Other Items",
-                              style: TextStyle(color: Colors.pink[200])),
-                          style: OutlinedButton.styleFrom(
-                              // backgroundColor: Colors.pink[200],
-                              padding: EdgeInsets.all(20),
-                              foregroundColor: Colors.white),
-                        ),
-                      ],
-                    )
-                  ],
+                          const SizedBox(width: 20),
+                          OutlinedButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const SecondScreen(),
+                                ),
+                              );
+                            },
+                            child: Text("Other Items",
+                                style: TextStyle(color: Colors.pink[200])),
+                            style: OutlinedButton.styleFrom(
+                                // backgroundColor: Colors.pink[200],
+                                padding: const EdgeInsets.all(20),
+                                foregroundColor: Colors.white),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
 }
+
 
 GestureDetector Card(String text, String image, BuildContext context) {
   return GestureDetector(
@@ -308,7 +328,7 @@ GestureDetector Card(String text, String image, BuildContext context) {
       Get.to(
         () => Detail(season: text, photo: image),
         transition: Transition.zoom,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(milliseconds: 200),
       );
 
       // Navigator.of(context).push(MaterialPageRoute(builder: (context) {
@@ -354,8 +374,10 @@ Container NavigationIcon(IconData icon, {bool isSelected = false}) {
     ),
     child: CircleAvatar(
       backgroundColor: Colors.transparent,
-      child:
-          Icon(icon, color: isSelected ? Colors.white : Colors.black, size: 25),
+      child: IconButton(onPressed: (){
+
+      }, icon: Icon(icon))
+      // Icon(icon, color: isSelected ? Colors.white : Colors.black, size: 25),
     ),
   );
 }
