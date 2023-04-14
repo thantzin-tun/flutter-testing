@@ -16,3 +16,13 @@ class City {
     Map<String, dynamic> toJson() => _$CityToJson(this);
 
 }
+
+// {
+//     "city":"Yangon",
+//     "streets":[
+//         "Upper General Street",
+//         "Sein Pann Mying Street",
+//         "U Ba Kaung"
+//     ]
+// }
+

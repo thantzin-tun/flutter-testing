@@ -1,5 +1,10 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'city_data.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
 
 City _$CityFromJson(Map<String, dynamic> json) => City(
       city: json['city'] as String?,

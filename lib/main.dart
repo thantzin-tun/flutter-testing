@@ -1,9 +1,11 @@
 import 'package:first_flutter_project/detail.dart';
+import 'package:first_flutter_project/provider/user_provider.dart';
 import 'package:first_flutter_project/views/first_screen.dart';
 import 'package:first_flutter_project/routes/routes.dart';
 import 'package:first_flutter_project/views/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   Get.testMode = true;
@@ -14,11 +16,16 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: MyRouter.generateRoute,
-      initialRoute: "/",
-      home: HomePage(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => UserProvider())
+      ],
+      child: const GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRouter.generateRoute,
+        initialRoute: "/",
+        home: HomePage(),
+      ),
     );
   }
 }

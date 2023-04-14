@@ -15,3 +15,10 @@ class Employee{
 
   Map<String, dynamic> toJson() => _$EmployeeToJson(this);
 }
+
+
+// {
+//     "id":1,
+//     "position": "Software Developer",
+//     "salary": 500000
+// }

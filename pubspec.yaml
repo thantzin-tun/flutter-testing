@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   json_serializable: ^6.6.1
   http: ^0.13.5
+  json_annotation: ^4.8.0
+  flutter_bloc: ^8.1.1
+  bloc:
+  meta:
+  provider:
 
 dev_dependencies:
   flutter_test:

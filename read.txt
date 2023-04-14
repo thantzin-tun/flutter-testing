@@ -1,0 +1,48 @@
+Fourth Screen is
+    Testing Provider Package
+    Operations: Mya Mya to Aye Aye , Fourth Screen to Fifth Screen
+
+
+Third Screen is 
+    Testing: >>>>>  BloC Package
+    Operations:>>   Counter Increase and Decrease
+
+
+depencidie
+    provider
+    retrofit
+    json_annotation
+    logger
+    pretty_dio_logger
+    dio
+    bloc 
+    flutter_bloc
+    equatable 
+    google_fonts
+    intl (Date format Package)
+    cached_network_image
+
+dev-dependencies
+    build_runner
+    retrofit_generator
+    json_serializable
+
+
+
+
+///Ruby Learners ချန်နယ်က
+
+လိူအပ်တယ့် package တွေ
+
+dependencies
+    retrofit:
+    logger:
+    cached_network_image:
+    get:
+    dio_flutter_transformer: (json အကြီးတွေဖတ်လို ကြာနေရင် ui  ကို လေးတာကနေ ကာကွယ်ပေးတာအောင်သုံးတာ)
+
+
+dev_dependencies
+    retrofit_generator:
+    build_runner:
+    json_serializable:    

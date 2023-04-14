@@ -10,11 +10,12 @@ class User {
   final String? phone;
   final String? address;
   final String? email;
+  final String? position;
 
-  User({this.name, this.phone, this.address, this.email});
+  User({this.name, this.phone, this.address, this.email,this.position});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserToJson(this);    
+  Map<String, dynamic> toJson() => _$UserToJson(this);
 
 }

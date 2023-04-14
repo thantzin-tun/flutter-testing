@@ -3,30 +3,35 @@
         "name": "Kyal Sin",
         "phone": "099415918434",
         "address": "Yangon",
-        "email": "zinmin.zn99@gmail.com"
+        "email": "zinmin.zn99@gmail.com",
+        "position": "Software Developer"
     },
     {
         "name": "Twal Tar",
         "phone": "09886745319",
         "address": "Mandalay",
-        "email": "twaltar@gmail.com"
+        "email": "twaltar@gmail.com",
+        "position": "Backend Developer"
     },
     {
         "name": "Myat Noe",
         "phone": "09887643128",
         "address": "Taungyi",
-        "email": "myatnoe123@@gmail.com"
+        "email": "myatnoe123@@gmail.com",
+        "position": "Fullstack Developer"
     },
     {
         "name": "Kyi Pyar",
         "phone": "09443567823",
         "address": "Ayeyarwady",
-        "email": "kyipyar333@gmail.com"
+        "email": "kyipyar333@gmail.com",
+        "position":"Java Developer"
     },
     {
         "name": "Than Sin",
         "phone": "0156778439",
         "address": "Mawlamyine",
-        "email": "zinmin.zn99@gmail.com"
+        "email": "zinmin.zn99@gmail.com",
+        "position":"Flutter Developer"
     }
 ]

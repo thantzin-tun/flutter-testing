@@ -1,5 +1,6 @@
 import 'package:first_flutter_project/model/city/city_data.dart';
 import 'package:first_flutter_project/model/employee/employee_data.dart';
+import 'package:first_flutter_project/model/user/user_data.dart';
 import 'package:first_flutter_project/views/third_screen.dart';
 import 'package:flutter/material.dart';
 import "dart:convert";
@@ -14,7 +15,7 @@ class SecondScreen extends StatefulWidget {
 }
 
 class _SecondScreenState extends State<SecondScreen> {
-
+  
   Future<String> _loadJsonFromAsset(String assetPath) async {
   return await rootBundle.loadString(assetPath);
   }
@@ -43,12 +44,21 @@ class _SecondScreenState extends State<SecondScreen> {
 
                   var employeeData = await _loadJsonFromAsset("assets/data/data.json");
                   Employee employee = Employee.fromJson(json.decode(employeeData));
+                  
+                  // final fruits = json.decode(fruitData);
+                  // List<Fruit>.from(fruits.map((model) => Fruit.fromJson(model)));
 
                   var cityData = await _loadJsonFromAsset("assets/data/dataOne.json");
                   City city = City.fromJson(json.decode(cityData));
 
+                  var userData = await _loadJsonFromAsset("assets/data/dataTwo.json");
+                  final user = json.decode(userData);
+                  List<User>.from(user.map((model) => User.fromJson(model)));
+
                   print(employee.toJson());
-                 
+
+                  print(city.toJson());
+                  print(user);
               },
               child: const Text("Json From Data"))
         ],
